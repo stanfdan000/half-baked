@@ -12,16 +12,18 @@ const lossesEl = document.getElementById('losses');
 const winsEl = document.getElementById('wins');
 
 // initialize state
-const hidingPlaces = ['tree', 'shed', 'boulder'];
+const hidingPlaces = ['tree', 'boulder', 'shed'];
 
 let correctGuesses = 0;
 let totalGuesses = 0;
 
-shedButton.addEventListener('click', () => {
+
+shedButton.addEventListener('click', () => { 
     const hidingSpot = Math.floor(Math.random() * 3);
     const answer = hidingPlaces[hidingSpot];
     handleGuess(answer, 'shed');
 });
+
 
 treeButton.addEventListener('click', () => {
     const hidingSpot = Math.floor(Math.random() * 3);
@@ -36,7 +38,38 @@ boulderButton.addEventListener('click', () => {
 });
 
 function handleGuess(correctSpot, userGuess) {
+    shedContainer.classList.remove('face');
+    treeContainer.classList.remove('face');
+    boulderContainer.classList.remove('face');
+
+    totalGuesses++;
+
+    if (userGuess === correctSpot) {
+        correctGuesses++;
+    }
+
+    const container = document.getElementById(`${correctSpot}-container`);
+
+    if (container === `${correctSpot}-container`) {
+        container.classList.toggle('face');
+        container.classList.toggle('face');
+        container.classList.toggle('face');
+        
+    }
+
+    //if (container === `${correctSpot}-container`); {
+    //    container.classlist.toggle('face'); 
+    //}
+    
     // reset the styles
+    
+    winsEl.textContent = correctGuesses;
+    lossesEl.textContent = `${totalGuesses - correctGuesses}`;
+    totalEl.textContent = totalGuesses;
+
+
+
+
     // then increment the guesses
     // then grab the appropriate container element for the correct guess from the DOM
     // then add the face class to that element so that the face shows up
