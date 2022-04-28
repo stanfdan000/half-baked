@@ -38,24 +38,35 @@ boulderButton.addEventListener('click', () => {
 });
 
 function handleGuess(correctSpot, userGuess) {
-    totalGuesses++;
-    if (userGuess === correctSpot) {
-        correctGuesses++; // change the wins element text content ${correctguesses}
-    }
-
-        //change the losses element text content to `${totalguesses - correctguesses}`
-    
-
-    // reset the styles
     shedContainer.classList.remove('face');
     treeContainer.classList.remove('face');
     boulderContainer.classList.remove('face');
 
+    totalGuesses++;
+
+    if (userGuess === correctSpot) {
+        correctGuesses++;
+    }
+
+    const container = document.getElementById(`${correctSpot}-container`);
+
+    if (container === `${correctSpot}-container`) {
+        container.classList.toggle('face');
+        container.classList.toggle('face');
+        container.classList.toggle('face');
+        
+    }
+
+    //if (container === `${correctSpot}-container`); {
+    //    container.classlist.toggle('face'); 
+    //}
+    
+    // reset the styles
+    
     winsEl.textContent = correctGuesses;
     lossesEl.textContent = `${totalGuesses - correctGuesses}`;
-    console.log(lossesEl.textContent);
-
     totalEl.textContent = totalGuesses;
+
 
 
 
