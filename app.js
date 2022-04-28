@@ -49,13 +49,8 @@ function handleGuess(correctSpot, userGuess) {
     }
 
     const container = document.getElementById(`${correctSpot}-container`);
-
-    if (container === `${correctSpot}-container`) {
-        container.classList.toggle('face');
-        container.classList.toggle('face');
-        container.classList.toggle('face');
-        
-    }
+   
+    container.classList.toggle('face');
 
     //if (container === `${correctSpot}-container`); {
     //    container.classlist.toggle('face'); 
